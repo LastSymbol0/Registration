@@ -12,8 +12,7 @@ class User
     public $email;
 
 
-    function setUser($link, $Username, $Password, $PasswordVerif,
-                        $FirstName, $LastName, $Mission, $Email, $DoB) {
+    function setUser($link, $Username, $Password, $FirstName, $LastName, $Mission, $Email, $DoB) {
         // экранирование символов для mysql и html
         $this->username = htmlentities(mysqli_real_escape_string($link, $Username));
         $this->firstName = htmlentities(mysqli_real_escape_string($link, $FirstName));
