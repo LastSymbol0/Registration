@@ -1,3 +1,15 @@
+#view {
+	margin-left: 10%;
+	text-align: left;
+}
+
+#form {
+    margin-left: 10%;
+	text-align: left;
+	font-style: italic;
+    font-weight: bold;
+}
+
 .fixed {
 	background-color: rgba(226, 212, 188, 0.9);
 	font-size: large;
@@ -12,11 +24,6 @@
 	font-size: 18px;
 }
 
-#view {
-	margin-left: 10%;
-	text-align: left;
-}
-
 .button {
     margin-left: 3%;
     font-size: 23px;
@@ -26,13 +33,6 @@
 
 .alert {
     color: #7a1a1a;
-}
-
-#form {
-    margin-left: 10%;
-	text-align: left;
-	font-style: italic;
-    font-weight: bold;
 }
 
 INPUT{
