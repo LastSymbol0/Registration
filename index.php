@@ -37,9 +37,8 @@ if (isset($_POST['username']) && isset($_POST['password']) &&
         //создание нового экземпляра класса User
         $user = new User;
         $user->setUser($link, $_POST['username'], $_POST['password'],
-                        $_POST['passwordVerif'], $_POST['firstName'],
-                        $_POST['lastName'], $_POST['mission'],
-                        $_POST['email'], $_POST['DoB']);
+                            $_POST['firstName'], $_POST['lastName'], 
+                            $_POST['mission'], $_POST['email'], $_POST['DoB']);
         //запись юзера в БД; в случае успешного запроса - редирект
         if ($user->setUserToDB($link)) {
             echo "<script language='javascript'>
