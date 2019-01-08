@@ -29,7 +29,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             <input type="text" name="username" placeholder="Логин"/>
         </p>
         <p>
-            <input type="text" name="password" placeholder="Пароль"/>
+            <input type="password" name="password" placeholder="Пароль"/>
         </p>
         <input class="button" type="submit" value="Вход">
     </form>
