@@ -21,6 +21,7 @@ class DataBase
         $query = "SELECT * FROM users WHERE username = '$clear'";
         $result = mysqli_query($link, $query)
             or die("Ошибка " . mysqli_error($link));
+		// если запрос вернул хоть одну строку - логин занят
         if (mysqli_fetch_row($result) > 0) {
         	return false;
         }
