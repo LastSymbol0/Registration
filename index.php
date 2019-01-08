@@ -15,6 +15,9 @@ if (isset($_POST['username']) && isset($_POST['password']) &&
     if ($_POST['username'] == "") {
         echo "<h3 class='alert'>Поле логина не может быть пустым</h3>";
     }
+    elseif ($_POST['username'] > 20) {
+        echo "<h3 class='alert'>Максимальная длинна логина - 20 символов</h3>";
+    }
     elseif (preg_match("/\ +/", $_POST['username'])) {
         echo "<h3 class='alert'>Поле логина не может содержать пробелов</h3>";
     }
@@ -23,6 +26,9 @@ if (isset($_POST['username']) && isset($_POST['password']) &&
     }
     elseif (strlen($_POST['password']) < 6) {
         echo "<h3 class='alert'>Минимальная длинна пароля - 6 символов</h3>";
+    }
+    elseif (strlen($_POST['password']) > 60) {
+        echo "<h3 class='alert'>Максимальная длинна пароля - 60 символов</h3>";
     }
     elseif ($_POST['password'] != $_POST['passwordVerif']) {
         echo "<h3 class='alert'>Введённые пароли не совпадают!</h3>";
@@ -33,17 +39,21 @@ if (isset($_POST['username']) && isset($_POST['password']) &&
     elseif (!preg_match("/[0-9]{1,4}\-[0-9]{1,2}\-[0-9]{1,2}/", $_POST['DoB'])) {
         echo "<h3 class='alert'>Некоректно введена дата рождения</h3>";
     }
+    elseif ($_POST['firstName'] > 15) {
+        echo "<h3 class='alert'>Максимальная длинна имени - 15 символов</h3>";
+    }
+    elseif ($_POST['lastName'] > 25) {
+        echo "<h3 class='alert'>Максимальная длинна фамилии - 25 символов</h3>";
+    }
     else {
         //создание нового экземпляра класса User
         $user = new User;
-        $user->setUser($link, $_POST['username'], $_POST['password'],
-                            $_POST['firstName'], $_POST['lastName'], 
+        $user->setUser($link, $_POST['username'], $_POST['password'], 
+                            $_POST['firstName'], $_POST['lastName'],
                             $_POST['mission'], $_POST['email'], $_POST['DoB']);
         //запись юзера в БД; в случае успешного запроса - редирект
         if ($user->setUserToDB($link)) {
-            echo "<script language='javascript'>
-            document.location.href = './LogIn.php';
-            </script>";
+            header('Location: ./LogIn.php');
             exit;
         }
     }
