@@ -16,12 +16,13 @@ class User
                         $FirstName, $LastName, $Mission, $Email, $DoB) {
         // экранирование символов для mysql и html
         $this->username = htmlentities(mysqli_real_escape_string($link, $Username));
-        $this->password = htmlentities(mysqli_real_escape_string($link, $Password));
         $this->firstName = htmlentities(mysqli_real_escape_string($link, $FirstName));
         $this->lastName = htmlentities(mysqli_real_escape_string($link, $LastName));
         $this->mission = htmlentities(mysqli_real_escape_string($link, $Mission));
         $this->email = htmlentities(mysqli_real_escape_string($link, $Email));
         $this->dob = htmlentities(mysqli_real_escape_string($link, $DoB));
+        // хэширование пароля
+        $this->password = password_hash($Password, PASSWORD_DEFAULT);
     }
 
     function setUserToDB($link) {
@@ -47,9 +48,9 @@ class User
         for ($i = 0 ; $i < $rows ; ++$i)    // поочерёдно достаём каждую строку и проверяем на совпадение
         {
             $row = mysqli_fetch_row($result);
-            if ($row[1] == $username && $row[2] == $password) {
+            if ($row[1] == $username && password_verify($password, $row[2])) {
                 mysqli_close($link);
-                return $row[0]; //id
+                return $row[0]; //возвращает id
             }
         }
         // если все строки перебрали, а совпадений не было
@@ -61,6 +62,7 @@ class User
         $query = "SELECT * FROM users WHERE id = '$id'";
         $result = mysqli_query($link, $query)
             or die("Ошибка " . mysqli_error($link));
+        // достаём единственную запись и переписываем в юзера
         $row = mysqli_fetch_row($result);
         $this->id = $row[0];
         $this->username = $row[1];
