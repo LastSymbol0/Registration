@@ -1,0 +1,48 @@
+.fixed {
+	background-color: rgba(226, 212, 188, 0.9);
+	font-size: large;
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 3%;
+	overflow: auto;
+	border-radius: 25px;
+	box-shadow: 0px 0px 70px 25px #e2d4bc;
+	text-align: center;
+	font-size: 18px;
+}
+
+#view {
+	margin-left: 10%;
+	text-align: left;
+}
+
+.button {
+    margin-left: 3%;
+    font-size: 23px;
+    border-radius: 13px;
+    font-weight: 600;
+}
+
+.alert {
+    color: #7a1a1a;
+}
+
+#form {
+    margin-left: 10%;
+	text-align: left;
+	font-style: italic;
+    font-weight: bold;
+}
+
+INPUT{
+    font-size: large;
+    background-color: #f7eddc;
+    color: #333333;
+    border-radius: 6px;
+}
+        
+BODY{
+    background-image:url('./pic/background.jpg');
+    background-size: cover;
+}
