@@ -1,10 +1,10 @@
 <?php
 class DataBase
 {
-	public $host = 'localhost'; // адрес сервера 
-	public $database = 'id8392395_usersdb'; // имя базы данных
-	public $user = 'id8392395_root'; // имя пользователя
-	public $password = 'azx340761'; // пароль
+	private $host = 'localhost'; // адрес сервера 
+	private $database = 'id8392395_usersdb'; // имя базы данных
+	private $user = 'id8392395_root'; // имя пользователя
+	private $password = 'azx340761'; // пароль
 	
 	function connectToDB()
 	{
