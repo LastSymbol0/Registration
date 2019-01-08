@@ -24,7 +24,7 @@ class User
         $this->dob = htmlentities(mysqli_real_escape_string($link, $DoB));
     }
 
-    public function setUserToDB($link) {
+    function setUserToDB($link) {
         // создание строки запроса
         $query = "INSERT INTO `users` (`id`, `username`, `password`, `firstName`,
                                 `lastName`, `mission`, `email`, `DoB`) VALUES
@@ -38,7 +38,7 @@ class User
         return true;
     }
 
-    public function getUserID($link, $username, $password)
+    function getUserID($link, $username, $password)
     {
         $query = 'SELECT * FROM users';
         $result = mysqli_query($link, $query)
@@ -56,7 +56,7 @@ class User
         return false;
     }
 
-    public function setUserFromDB($link, $id)
+    function setUserFromDB($link, $id)
     {
         $query = "SELECT * FROM users WHERE id = '$id'";
         $result = mysqli_query($link, $query)
